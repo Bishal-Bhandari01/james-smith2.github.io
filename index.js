@@ -47,22 +47,4 @@ $(document).ready(function(){
 			icons.src = "./images/play.png"
 		}
 	}
-
-	// owl carousel script
-	$('.carousel').owlCarousel({
-		margin: 20,
-		loop: true,
-		autoplayTimeOut: 2000,
-		autoplayhoverPause: true,
-		responsive: {
-			0:{
-				items: 1,
-				nav: false
-			},
-			600:{
-				items: 1,
-				nav: false
-			}
-		}
-	});
 });
