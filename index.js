@@ -25,13 +25,13 @@ $(document).ready(function(){
 	var typed = new Typed(".typing", {
 		strings: ["Youtuber.","Programmer.","Graphic Designer.","Gamer.","Twitch Streamer.","Freelancer."],
 		typeSpeed: 100,
-		backSpeed: 60,
+		fadeOut: true,
 		loop: true
 	});
 	var typed = new Typed(".typing-2", {
 		strings: ["I'm a Youtuber.","I'm a Twitch Streamer.","specializing in Graphic Designing.","a Freelancer.","I love to play video games.","I'm learning Cyber Security."],
 		typeSpeed: 100,
-		backSpeed: 60,
+		fadeOut: true,
 		loop: true
 	});
 
@@ -41,10 +41,10 @@ $(document).ready(function(){
 	icons.onclick = function(){
 		if(song.paused){
 			song.play();
-			icons.src = "pause.png";
+			icons.src = "./images/pause.png";
 		}else{
 			song.pause();
-			icons.src = "play.png"
+			icons.src = "./images/play.png"
 		}
 	}
 
@@ -60,7 +60,7 @@ $(document).ready(function(){
 				nav: false
 			},
 			600:{
-				items: 2,
+				items: 1,
 				nav: false
 			}
 		}
