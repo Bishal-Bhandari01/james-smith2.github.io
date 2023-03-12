@@ -5,6 +5,7 @@ help = [
   'whois<span class="mx-5"></span>- Show detail info<br>',
   'show projects<span class="mx-5"></span>- Show my projects<br>',
   'show certs<span class="mx-5"></span>- Show achived certs<br>',
+  'social<span class="mx-5"></span>- Show social media<br>',
   'clear<span class="mx-5"</span>- Clear screen<br>',
 ]
 
