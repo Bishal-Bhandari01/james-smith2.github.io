@@ -1,68 +1,86 @@
-$(document).ready(function(){
-	$(window).scroll(function(){
-		if(this.scrollY > 20){
-			$('.navbar').addClass("sticky");
-		}else{
-			$('.navbar').removeClass("sticky");
-		}
-		if(this.scrollY > 500){
-			$('.scroll-up-btn').addClass("show");
-		}
-		else{
-			$('.scroll-up-btn').removeClass("show");
-		}
-	});
-	// slide up script
-	$('.scroll-up-btn').click(function(){
-		$('html').animate({scrollTop: 0});
-	});
-	// toggle menu/navbar script
-	$('.menu-btn').click(function(){
-		$('.navbar .menu').toggleClass("active");
-		$('.menu-btn i').toggleClass("active");
-	});
-	// typing animation script
-	var typed = new Typed(".typing", {
-		strings: ["Youtuber.","Programmer.","Graphic Designer.","Gamer.","Twitch Streamer.","Freelancer."],
-		typeSpeed: 100,
-		fadeOut: true,
-		loop: true
-	});
-	var typed = new Typed(".typing-2", {
-		strings: ["I'm a Youtuber.","I'm a Twitch Streamer.","specializing in Graphic Designing.","a Freelancer.","I love to play video games.","I'm learning Cyber Security."],
-		typeSpeed: 100,
-		fadeOut: true,
-		loop: true
-	});
+const terminalOutput = document.querySelector('#terminal_outputs')
+const userInput = document.querySelector('#user_input')
+help = [
+  '<p class="mt-2">root@Bishal_Bhandari:~ help</p>',
+  'whois<span class="mx-5"></span>- Show detail info<br>',
+  'show projects<span class="mx-5"></span>- Show my projects<br>',
+  'show certs<span class="mx-5"></span>- Show achived certs<br>',
+  'clear<span class="mx-5"</span>- Clear screen<br>',
+]
 
-	// play and pause section
-	var song = document.getElementById("sound");
-	var icons = document.getElementById("playicon");
-	icons.onclick = function(){
-		if(song.paused){
-			song.play();
-			icons.src = "./images/pause.png";
-		}else{
-			song.pause();
-			icons.src = "./images/play.png"
-		}
-	}
+whois = [
+  '<p class="mt-2">root@Bishal_Bhandari:~ whois</p>',
+  'My name is Bishal Bhandari. Specialize in web-development using Angular and Java.',
+]
 
-	// owl carousel script
-	$('.carousel').owlCarousel({
-		margin: 20,
-		loop: true,
-		autoplayTimeOut: 2000,
-		autoplayhoverPause: true,
-		responsive: {
-			0:{
-				items: 1,
-				nav: false
-			},
-			600:{
-				items: 1,
-				nav: false
-			}
-		}
-	});
-});
+showCerts = '<p class="mt-2">root@Bishal_Bhandari:~ show certs</p>'
+
+showProjects = '<p class="mt-2">root@Bishal_Bhandari:~ show projects</p>'
+
+socialMedia = [
+  '<p class="mt-2">root@Bishal_Bhandari:~ social</p>',
+  'LinkedIn:<span class="mx-5"></span><a href="https://www.linkedin.com/in/bishal-bhandari-5035021a0/" target="_blank" class="text-decoration-none">Bishal Bhandari</a>',
+]
+
+function query(command) {
+  switch (command) {
+    case 'help':
+      terminalOutput.innerHTML += Commander(help)
+      break
+    case 'whois':
+      terminalOutput.innerHTML += Commander(whois)
+      break
+    case 'show certs':
+      new WinBox({
+        title: 'CERTIFICATES',
+        mount: document.querySelector('#certificate'),
+        x: 'center',
+        y: 'center',
+        width: '71%',
+        height: '71%',
+        onfocus: function () {
+          this.setBackground = '#fff'
+        },
+        onBlur: function () {
+          this.setBackground = '#999'
+        },
+      })
+      terminalOutput.innerHTML += showCerts
+      break
+    case 'social':
+      terminalOutput.innerHTML += Commander(socialMedia)
+      break;
+    case 'clear':
+      terminalOutput.innerHTML = ''
+      break
+    default:
+      terminalOutput.innerHTML += ErrorCmd(command)
+      break
+  }
+}
+function key(e) {
+  const input = user_input.value
+
+  if (e.key == 'Enter') {
+    query(input)
+    user_input.value = ''
+    return
+  }
+}
+document.addEventListener('keypress', key)
+
+function ErrorCmd(args) {
+  error = [
+    `<p class="mt-2">root@Bishal-Bhandari:~ ${args}</p>`,
+    `Error: Command not found.`,
+  ]
+  return Commander(error)
+}
+
+function Commander(args) {
+  let items = ''
+  args.forEach((element) => {
+    items += element
+  })
+  return items
+}
