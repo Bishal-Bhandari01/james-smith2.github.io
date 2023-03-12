@@ -62,7 +62,7 @@ function query(command) {
 function key(e) {
   const input = user_input.value
 
-  if (e.key == 'Enter') {
+  if (e.key == 13) {
     query(input)
     user_input.value = ''
     return
