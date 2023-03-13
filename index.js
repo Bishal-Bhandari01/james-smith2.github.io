@@ -7,7 +7,7 @@ help = [
   'show certs<span class="mx-5"></span>- Show achived certs<br>',
   'social<span class="mx-5"></span>- Show social media<br>',
   'clear<span class="mx-5"</span>- Clear screen<br>',
-  'usage:<br><span class="mx-5"></span>:~ help<br>',
+  'usage:<br><span class="mx-5"></span>:~ show certs<br>',
 ]
 
 whois = [
@@ -63,7 +63,7 @@ function query(command) {
 function key(e) {
   const input = user_input.value
 
-  if (e.key == 13) {
+  if (e.key == 'Enter') {
     query(input)
     user_input.value = ''
     return
