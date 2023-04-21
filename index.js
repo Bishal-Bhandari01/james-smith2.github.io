@@ -15,7 +15,16 @@ whois = [
   'My name is Bishal Bhandari. Specialize in web-development using Angular and Java.',
 ]
 
-showCerts = '<p class="mt-2">root@Bishal_Bhandari:~ show certs</p>'
+showCerts = [
+  '<p class="mt-2">root@Bishal_Bhandari:~ show certs</p>',
+  'Introduction to CyberSecurity (Cisco) <a class="mx-5" href="https://www.credly.com/badges/f76856aa-e989-47ca-8feb-3b62ecdd9b4e/linked_in_profile">https://www.credly.com/badges/f76856aa-e989-47ca-8feb-3b62ecdd9b4e/linked_in_profile</a><br>',
+  'CyberSecurity: Inside SOC <a class="mx-5" href="https://www.udemy.com/certificate/UC-958636e6-3096-42d2-b87f-e5e905509f78/">https://www.udemy.com/certificate/UC-958636e6-3096-42d2-b87f-e5e905509f78/</a><br>',
+  'CS50 (Harvard University) <a class="mx-5" href="https://certificates.cs50.io/0c014ad0-2dce-4353-8792-c9a6977c69e3.pdf?size=letter">https://certificates.cs50.io/0c014ad0-2dce-4353-8792-c9a6977c69e3.pdf?size=letter</a><br>',
+  'OPSWAT File Security Associate (OFSA) <a class="mx-5" href="https://www.credly.com/badges/41132222-61fa-46eb-8ff5-d8f87a225702/linked_in_profile">https://www.credly.com/badges/41132222-61fa-46eb-8ff5-d8f87a225702/linked_in_profile</a><br>',
+  'ReactJS (Basic) (HackerRank) <a class="mx-5" href="https://www.hackerrank.com/certificates/6af715f06f09">https://www.hackerrank.com/certificates/6af715f06f09</a><br>',
+  'Java (Basic) (HackerRank) <a class="mx-5" href="https://www.hackerrank.com/certificates/377a58a7cd82">https://www.hackerrank.com/certificates/377a58a7cd82</a><br>',
+  'Angular (Basic) (HackerRank) <a class="mx-5" href="https://www.hackerrank.com/certificates/86a93e5eb67b">https://www.hackerrank.com/certificates/86a93e5eb67b</a>'
+]
 
 showProjects = '<p class="mt-2">root@Bishal_Bhandari:~ show projects</p>'
 
@@ -33,21 +42,7 @@ function query(command) {
       terminalOutput.innerHTML += Commander(whois)
       break
     case 'show certs':
-      new WinBox({
-        title: 'CERTIFICATES',
-        mount: document.querySelector('#certificate'),
-        x: 'center',
-        y: 'center',
-        width: '71%',
-        height: '71%',
-        onfocus: function () {
-          this.setBackground = '#fff'
-        },
-        onBlur: function () {
-          this.setBackground = '#999'
-        },
-      })
-      terminalOutput.innerHTML += showCerts
+      terminalOutput.innerHTML += Commander(showCerts)
       break
     case 'social':
       terminalOutput.innerHTML += Commander(socialMedia)
@@ -62,7 +57,6 @@ function query(command) {
 }
 function key(e) {
   const input = user_input.value
-
   if (e.key == 'Enter') {
     query(input)
     user_input.value = ''
@@ -74,7 +68,7 @@ document.addEventListener('keypress', key)
 function ErrorCmd(args) {
   error = [
     `<p class="mt-2">root@Bishal-Bhandari:~ ${args}</p>`,
-    `Error: Command not found.`,
+    `Error: ${args} command not found.`,
   ]
   return Commander(error)
 }
