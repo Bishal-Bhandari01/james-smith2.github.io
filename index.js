@@ -55,15 +55,22 @@ function query(command) {
       break
   }
 }
-function key(e) {
-  const input = user_input.value
-  if (e.key == '13') {
-    query(input)
-    user_input.value = ''
-    return
+//function key(e) {
+//  const input = user_input.value
+//  if (e.key == '13') {
+//    query(input)
+//    user_input.value = ''
+//    return
+//  }
+//}
+document.addEventListener('keypress', function(e) {
+  const input = user_input.value;
+  if(e.key === 13){
+    query(input);
+    user_input.value = '';
+    return;
   }
-}
-document.addEventListener('keypress', key)
+})
 
 function ErrorCmd(args) {
   error = [
