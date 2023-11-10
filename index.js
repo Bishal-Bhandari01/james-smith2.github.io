@@ -2,7 +2,7 @@ const terminalOutput = document.querySelector('#terminal_outputs')
 const userInput = document.querySelector('#user_input')
 help = [
   '<p class="mt-2">root@Bishal_Bhandari:~ help</p>',
-  'whois<span class="mx-5"></span>- Show detail info<br>',
+  'whoami<span class="mx-5"></span>- Show detail info<br>',
   'show projects<span class="mx-5"></span>- Show my projects<br>',
   'show certs<span class="mx-5"></span>- Show achived certs<br>',
   'social<span class="mx-5"></span>- Show social media<br>',
@@ -10,9 +10,11 @@ help = [
   'usage:<br><span class="mx-5"></span>:~ show certs<br>',
 ]
 
-whois = [
+whoami = [
   '<p class="mt-2">root@Bishal_Bhandari:~ whois</p>',
-  'My name is Bishal Bhandari. Specialize in web-development using Angular and Java.',
+  'My name is Bishal Bhandari.',
+  'Specialize in web-development using Angular and Java.',
+  'Security Analyst intern - Present'
 ]
 
 showCerts = [
@@ -38,7 +40,7 @@ function query(command) {
     case 'help':
       terminalOutput.innerHTML += Commander(help)
       break
-    case 'whois':
+    case 'whoami':
       terminalOutput.innerHTML += Commander(whois)
       break
     case 'show certs':
@@ -65,7 +67,7 @@ function query(command) {
 //}
 document.addEventListener('keypress', function(e) {
   const input = user_input.value;
-  if(e.key === 13){
+  if(e.key === "Enter"){
     query(input);
     user_input.value = '';
     return;
